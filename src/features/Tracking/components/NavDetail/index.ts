@@ -1,0 +1,1 @@
+export { NavDetail } from "./NavDetail";
