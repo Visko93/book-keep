@@ -1,17 +1,85 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-}
+/* Referencia: https://piccalil.li/blog/a-modern-css-reset/ */
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
+/* ------------------ */
+/* RESET */
+/* ------------------ */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+/* Remove todas as margins default*/
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Limpar estilizacao bullet das listas*/
+ul,
+li,
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Faz o Body ocupar a totalidade da altura da tela, aumenta o line-height de 
+1.2 para 1.5 para melhor leitura , e diminui a qualidade pixelada das letras, mlehorando seu carregamento*/
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* para os links sem classes faz com que tenham um underline mais visivel */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Faz com que imagens nao gerem overflow*/
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Padroniza as font dos elementos de forms */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove animacoes transicoes, smooth scrolling, para pessoas que selecionarem a reducaode movimentos */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,5 +1,26 @@
 .container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+.detail {
+  display: flex;
   align-items: center;
+  height: fit-content;
+}
+.icon {
+  color: dimgrey;
+}
+.value {
+  color: dimgrey;
+}
+
+.value h4 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0;
 }

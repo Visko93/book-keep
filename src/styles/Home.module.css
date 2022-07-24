@@ -1,9 +1,12 @@
 .container {
   padding: 0 2rem;
+
+  width: 100%;
+  max-width: 1333px;
+  margin: 0 auto;
 }
 
 .main {
-  min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
