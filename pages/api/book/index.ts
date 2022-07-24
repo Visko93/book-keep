@@ -18,7 +18,6 @@ export default async function handle(
 
 // POST /api/book
 // Required fields in body: title, author, userId
-// Optional fields in body: content
 async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
   const { title, author, userId } = req.body;
   const result = await db.book.create({
@@ -33,7 +32,6 @@ async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
 }
 
 // GET /api/book
-// Required fields in body: userId
 async function handleGET(req: NextApiRequest, res: NextApiResponse) {
   debugger;
   const result = await db.book.findMany({
