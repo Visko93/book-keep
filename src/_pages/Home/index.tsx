@@ -1,6 +1,6 @@
-import { Tracking } from "@/features/Tracking";
+import { Tracking } from "~/features/Tracking";
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+import styles from "~/styles/Home.module.css";
 
 export function Home() {
   return (

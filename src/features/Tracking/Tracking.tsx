@@ -1,4 +1,4 @@
-import { Nav } from "@/components";
+import { Nav } from "~/components";
 import styles from "./style.module.css";
 import { NavActions, NavDetail, NavUser } from "./components";
 
