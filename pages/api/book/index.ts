@@ -7,7 +7,7 @@ export default async function handle(
 ) {
   if (req.method === "GET") {
     handleGET(req, res);
-  } else if (req.method === "DELETE") {
+  } else if (req.method === "POST") {
     handlePOST(req, res);
   } else {
     throw new Error(
@@ -26,6 +26,7 @@ async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
       title,
       author,
       userId,
+      status: "TO_READ",
     },
   });
   res.json(result);
@@ -34,9 +35,18 @@ async function handlePOST(req: NextApiRequest, res: NextApiResponse) {
 // GET /api/book
 // Required fields in body: userId
 async function handleGET(req: NextApiRequest, res: NextApiResponse) {
-  const { userId } = req.body;
+  debugger;
   const result = await db.book.findMany({
-    where: { userId },
+    select: {
+      author: true,
+      finished: true,
+      finishedDate: true,
+      id: true,
+      onProgress: true,
+      rating: true,
+      status: true,
+      title: true,
+    },
   });
   res.json(result);
 }
