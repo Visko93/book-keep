@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "styles/Home.module.css";
+import { Home } from "@/_pages/Home";
 
-const Home: NextPage = () => {
-  return <div className={styles.container}></div>;
+const Index: NextPage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default Index;
