@@ -1,0 +1,70 @@
+@keyframes collapse {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 999;
+  margin: 0;
+  min-height: fit-content;
+
+  border-radius: 0 16px 16px 0;
+  min-width: fit-content;
+  height: 100vh;
+
+  animation-name: collapse;
+  animation-duration: 400ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+.modalBackdrop {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px);
+  inset: 0;
+}
+
+.modalContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalClose {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  font-size: 1.75rem;
+}
+
+.modalClose button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal__content {
+    background-color: #f9f9f9;
+    color: #1a1a1a;
+  }
+}

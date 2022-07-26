@@ -5,3 +5,12 @@
 
   width: 100%;
 }
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  margin-right: 1rem;
+}
