@@ -4,6 +4,7 @@ import type { Props } from "./Modal.type";
 
 import styles from "./style.module.css";
 
+// prettier-ignore
 export function Modal({ children, isOpen, handleClose }: Props) {
   React.useEffect(() => {
     const closeOnEscapeKey = (event: KeyboardEvent) =>
@@ -29,5 +30,5 @@ export function Modal({ children, isOpen, handleClose }: Props) {
       </dialog>
       <div className={styles.modalBackdrop}></div>
     </>
-  );
+  )
 }

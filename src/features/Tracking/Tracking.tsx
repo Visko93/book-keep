@@ -1,6 +1,6 @@
-import { Nav } from "~/components";
-import styles from "./style.module.css";
-import { NavDetail, NavUser } from "./components";
+import { Nav } from "~/components"
+import styles from "./style.module.css"
+import { NavDetail, NavUser } from "./components"
 
 export default function Tracking() {
   return (
@@ -10,5 +10,5 @@ export default function Tracking() {
         <NavDetail></NavDetail>
       </Nav>
     </div>
-  );
+  )
 }

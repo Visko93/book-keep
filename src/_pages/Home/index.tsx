@@ -1,23 +1,23 @@
-import * as React from "react";
-import { Tracking } from "~/features/Tracking";
-import Head from "next/head";
-import styles from "~/styles/Home.module.css";
-import { useRouter } from "next/router";
-import { BookForm } from "~/features/BookForm";
+import * as React from "react"
+import { Tracking } from "~/features/Tracking"
+import Head from "next/head"
+import styles from "~/styles/Home.module.css"
+import { useRouter } from "next/router"
+import { BookForm } from "~/features/BookForm"
 
 export function Home() {
-  let navigate = useRouter();
-  const [bookForm, setBookForm] = React.useState(false);
+  let navigate = useRouter()
+  const [bookForm, setBookForm] = React.useState(false)
 
   const handleProfileOpen = () => {
-    setBookForm(true);
+    setBookForm(true)
     // navigate.push("/profile/" + id, { });
-  };
+  }
 
   const handleProfileClose = () => {
-    setBookForm(false);
+    setBookForm(false)
     // navigate.push("/");
-  };
+  }
 
   return (
     <>
@@ -42,5 +42,5 @@ export function Home() {
       </div>
       <BookForm isOpen={bookForm} handleClose={handleProfileClose} />
     </>
-  );
+  )
 }
