@@ -4,6 +4,7 @@ import Head from "next/head"
 import styles from "~/styles/Home.module.css"
 import { useRouter } from "next/router"
 import { BookForm } from "~/features/BookForm"
+import { BookList } from "~/features/BooksList"
 
 export function Home() {
   let navigate = useRouter()
@@ -36,6 +37,7 @@ export function Home() {
               Register a new book
             </button>
           </div>
+          <BookList />
         </main>
 
         <footer className={styles.footer}></footer>

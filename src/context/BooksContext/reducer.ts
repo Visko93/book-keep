@@ -14,7 +14,13 @@ export const booksReducer = (state: Props, { payload, type }: ReducerProps) => {
       if (state.books.length === 0) {
         return { ...state, books: [data] }
       }
-      return { ...state, books: [...state.books, data] }
+      return {
+        ...state,
+        books: [
+          ...state.books,
+          { id: String(state.books.length + 1), ...data },
+        ],
+      }
     }
 
     case actionTypes.delete: {
