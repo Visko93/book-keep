@@ -28,7 +28,7 @@ export function BookCard({
             </button>
             <button
               onClick={() => handleDelete(id as string)}
-              style={{ backgroundColor: "darkred" }}
+              style={{ backgroundColor: "darkred", color: "white" }}
             >
               Delete
             </button>

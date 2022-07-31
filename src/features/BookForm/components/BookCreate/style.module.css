@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.form button {
+  margin-top: 1rem;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

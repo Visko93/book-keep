@@ -119,6 +119,15 @@ export function BookEdit({ handleClose, id }: Props) {
           <option value={ReadStatus.READING}>Reading</option>
           <option value={ReadStatus.READED}>Finished</option>
         </select>
+        <label htmlFor="finishedDate">Finish Date:</label>
+        <input
+          type="date"
+          id="finishedDate"
+          name="finishedDate"
+          defaultValue={finishedDate ?? new Date().toISOString()}
+          onChange={handleChange}
+          disabled={status !== ReadStatus.READED}
+        />
         <div className={styles.actions}>
           <button onClick={() => handleDelete(id)} className={styles.button}>
             Delete
