@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Head from "next/head"
 import { Tracking } from "~/features/Tracking"
 import { BookForm } from "~/features/BookForm"
 import { BookList } from "~/features/BooksList"
 import { useModal } from "~/hooks/useModal"
 import styles from "~/styles/Home.module.css"
+import { fecthBooks } from "~/services/books.server"
+import { useBooksContext } from "~/context/BooksContext"
 
 export function Home() {
   const [id, setId] = useState<string | undefined>()

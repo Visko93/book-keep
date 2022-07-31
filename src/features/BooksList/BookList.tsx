@@ -1,6 +1,8 @@
+import { useEffect } from "react"
 import { useBooksContext } from "~/context/BooksContext"
 import { actionTypes } from "~/context/BooksContext/actions"
 import { IBook } from "~/context/BooksContext/types"
+import { fecthBooks } from "~/services/books.server"
 import { Props } from "./BookList.types"
 import { BookCard } from "./components/BookCard"
 import styles from "./style.module.css"
@@ -12,7 +14,6 @@ export default function BookList({ handleOpen, handleCurrentId }: Props) {
     handleCurrentId(id)
     handleOpen()
   }
-  console.log(state)
 
   const handleDelete = (id: string) => {
     dispatch({

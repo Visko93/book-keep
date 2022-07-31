@@ -42,7 +42,7 @@ type ReducerProps = {
 
 type BooksContextValue = {
   state: Props
-  dispatch: React.Dispatch<any>
+  dispatch: React.Dispatch<ReducerProps>
 }
 
 export type { ReducerProps, Props, IBook, IUser, BooksContextValue }

@@ -39,6 +39,9 @@ export const booksReducer = (state: Props, { payload, type }: ReducerProps) => {
     case actionTypes.loading: {
       return { ...state }
     }
+    case actionTypes.firstLoad: {
+      return { ...state, books: payload.data }
+    }
     case actionTypes.error: {
       return {
         ...state,

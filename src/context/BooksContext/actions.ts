@@ -5,4 +5,5 @@ export const actionTypes = {
   error: "ERROR",
   reset: "RESET",
   loading: "LOADING",
-};
+  firstLoad: "FIRSTLOADING",
+}
