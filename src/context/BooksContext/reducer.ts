@@ -16,7 +16,6 @@ export const booksReducer = (state: Props, { payload, type }: ReducerProps) => {
       if (state.books.length === 0) {
         return { ...state, books: [{ id: String(id), ...data }] }
       }
-      debugger
       return {
         ...state,
         books: [...state.books, { id: String(id), ...data }],
@@ -32,11 +31,10 @@ export const booksReducer = (state: Props, { payload, type }: ReducerProps) => {
 
     case actionTypes.update: {
       const { data, id } = payload
-      const newBooksRecord = state.books.map(
-        (book: IBook) => book.id === id && { ...book, ...data }
+      const updatedBookRecord = state.books.map((book: IBook) =>
+        book.id === id ? { ...book, ...data } : book
       )
-
-      return { ...state, books: { ...state.books, newBooksRecord } }
+      return { ...state, books: updatedBookRecord }
     }
     case actionTypes.loading: {
       return { ...state }

@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent, useCallback } from "react"
+import { useState, ChangeEvent, FormEvent, useCallback, useMemo } from "react"
 import { Modal } from "~/components"
 import { useBooksContext } from "~/context/BooksContext"
 import { Props } from "./BookEdit.types"
@@ -62,13 +62,19 @@ export function BookEdit({ handleClose, id }: Props) {
     }
   }
 
-  const starRating = useCallback(
-    () =>
-      new Array(rating)
-        .fill("⭐")
-        .map((star, index) => <span key={index}>{star}</span>),
-    [rating]
-  )
+  const handleDelete = (id: string) => {
+    try {
+      dispatch({
+        type: actionTypes.delete,
+        payload: { id: id },
+      })
+      handleClose()
+    } catch (error) {
+      throw new Error("Failed to save new book.")
+    }
+  }
+
+  const starRating = useMemo(() => Array(Number(rating)).fill(`⭐`), [rating])
 
   return (
     <>
@@ -105,7 +111,7 @@ export function BookEdit({ handleClose, id }: Props) {
             value={rating}
             onChange={handleChange}
           />
-          <div>{starRating()}</div>
+          <div>{starRating}</div>
         </label>
         <label htmlFor="readState">Status of this book:</label>
         <select id="readState" name="readState" onChange={handleStatusChange}>
@@ -113,9 +119,14 @@ export function BookEdit({ handleClose, id }: Props) {
           <option value={ReadStatus.READING}>Reading</option>
           <option value={ReadStatus.READED}>Finished</option>
         </select>
-        <button type="submit" className={styles.button}>
-          Register
-        </button>
+        <div className={styles.actions}>
+          <button onClick={() => handleDelete(id)} className={styles.button}>
+            Delete
+          </button>
+          <button type="submit" className={styles.button}>
+            Edit
+          </button>
+        </div>
       </form>
     </>
   )

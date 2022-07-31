@@ -15,9 +15,7 @@ export function BookCard({
           <h3>{title}</h3>
           <p>{author}</p>
           <div className={styles.rating}>
-            {new Array(rating).map((star, index) => (
-              <span key={index}>⭐</span>
-            ))}
+            {new Array(Number(rating)).fill(`⭐`)}
           </div>
         </div>
         <div className={styles.actions}>
