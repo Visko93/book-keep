@@ -6,4 +6,5 @@ export type Props = {
     "author" | "rating" | "title" | "user" | "createdAt" | "status" | "id"
   >
   handleEdit: (id: string) => void
+  handleDelete: (id: string) => void
 }

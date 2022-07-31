@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from "react"
+import { useState, ChangeEvent, FormEvent, useCallback } from "react"
 import { Modal } from "~/components"
 import { useBooksContext } from "~/context/BooksContext"
 import { Props } from "./BookEdit.types"
@@ -53,14 +53,22 @@ export function BookEdit({ handleClose, id }: Props) {
 
     try {
       dispatch({
-        type: actionTypes.create,
-        payload: { data: bookData },
+        type: actionTypes.update,
+        payload: { id: id, data: bookData },
       })
       handleClose()
     } catch (error) {
       throw new Error("Failed to save new book.")
     }
   }
+
+  const starRating = useCallback(
+    () =>
+      new Array(rating)
+        .fill("⭐")
+        .map((star, index) => <span key={index}>{star}</span>),
+    [rating]
+  )
 
   return (
     <>
@@ -85,6 +93,20 @@ export function BookEdit({ handleClose, id }: Props) {
           defaultValue={author}
           onChange={handleChange}
         />
+        <label htmlFor="rating" className={styles.rate}>
+          Rating:
+          <input
+            type="range"
+            id="rating"
+            name="rating"
+            min={0}
+            max={5}
+            step={1}
+            value={rating}
+            onChange={handleChange}
+          />
+          <div>{starRating()}</div>
+        </label>
         <label htmlFor="readState">Status of this book:</label>
         <select id="readState" name="readState" onChange={handleStatusChange}>
           <option value={ReadStatus.TO_READ}>To read</option>
