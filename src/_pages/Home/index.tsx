@@ -1,23 +1,23 @@
-import * as React from "react"
-import { Tracking } from "~/features/Tracking"
+import { useEffect, useState } from "react"
 import Head from "next/head"
-import styles from "~/styles/Home.module.css"
-import { useRouter } from "next/router"
+import { Tracking } from "~/features/Tracking"
 import { BookForm } from "~/features/BookForm"
 import { BookList } from "~/features/BooksList"
+import { useModal } from "~/hooks/useModal"
+import styles from "~/styles/Home.module.css"
 
 export function Home() {
-  let navigate = useRouter()
-  const [bookForm, setBookForm] = React.useState(false)
+  const [id, setId] = useState<string | undefined>()
+  const { open, handleOpen, handleClose } = useModal(id)
 
-  const handleProfileOpen = () => {
-    setBookForm(true)
-    // navigate.push("/profile/" + id, { });
-  }
+  useEffect(() => {
+    if (open === false) {
+      setId(undefined)
+    }
+  }, [open])
 
-  const handleProfileClose = () => {
-    setBookForm(false)
-    // navigate.push("/");
+  const handleCurrentId = (id: string) => {
+    setId(id)
   }
 
   return (
@@ -33,16 +33,16 @@ export function Home() {
           <Tracking />
           <hr />
           <div>
-            <button className="button" onClick={handleProfileOpen}>
+            <button className="button" onClick={handleOpen}>
               Register a new book
             </button>
           </div>
-          <BookList />
+          <BookList handleOpen={handleOpen} handleCurrentId={handleCurrentId} />
         </main>
 
         <footer className={styles.footer}></footer>
       </div>
-      <BookForm isOpen={bookForm} handleClose={handleProfileClose} />
+      <BookForm isOpen={open} handleClose={handleClose} id={id} />
     </>
   )
 }

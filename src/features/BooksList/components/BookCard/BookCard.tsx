@@ -1,9 +1,10 @@
-import { Card } from "~/components/Card"
-import type { Props } from "./BookCard"
-
+import { Card } from "~/components"
+import { Props } from "./BookCard.types"
 import styles from "./style.module.css"
+
 export function BookCard({
-  data: { author, title, createdAt, rating, status, user },
+  data: { author, title, createdAt, rating, status, user, id },
+  handleEdit,
   ...rest
 }: Props) {
   return (
@@ -15,7 +16,7 @@ export function BookCard({
           <div className={styles.rating}>{rating}</div>
         </div>
         <div className={styles.actions}>
-          <button>Edit</button>
+          <button onClick={() => handleEdit(id as string)}>Edit</button>
           <span className={styles.status}>{status}</span>
         </div>
       </div>
